@@ -1,9 +1,14 @@
 {
-  "name": "BlackJack",
+  "name": "BlackJack Suite",
   "short_name": "BlackJack",
+  "description": "Profesionalno orodje za analizo in igranje Blackjacka s kalkulatorjem pričakovane vrednosti.",
+  "categories": ["games", "utilities"],
   "display": "standalone",
+  "orientation": "any",
   "scope": "./",
   "start_url": "./",
+  "theme_color": "#1a1a1a",
+  "background_color": "#1a1a1a",
   "icons": [
     {
       "src": "icons/icon-72x72.png",
@@ -52,6 +57,15 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "BlackJack Suite na namizju"
     }
   ]
 }

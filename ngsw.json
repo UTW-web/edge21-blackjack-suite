@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1779208802858,
+  "timestamp": 1779209151062,
   "index": "/edge21-blackjack-suite/index.html",
   "assetGroups": [
     {
@@ -56,7 +56,7 @@
     "/edge21-blackjack-suite/icons/favicon-32x32.png": "facc87a1fa2b01f2414e6a529f2c2e0714762a84",
     "/edge21-blackjack-suite/index.html": "4b3ef8ffafba9b123d6b55e85f8e3af8111b8d5a",
     "/edge21-blackjack-suite/main-JTSI5XMU.js": "05877e29101465b54920f06475517152f0af158c",
-    "/edge21-blackjack-suite/manifest.webmanifest": "a124399c456f135f47131f21f2324a0141e17a81",
+    "/edge21-blackjack-suite/manifest.webmanifest": "03cfc5518f49bb821f1eb50efd482cac03ecca71",
     "/edge21-blackjack-suite/styles-JMSLWZAZ.css": "32102996b3a651c23a1cd0704372b5ad1a4012aa"
   },
   "navigationUrls": [
