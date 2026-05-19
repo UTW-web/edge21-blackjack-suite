@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 @Component({
-  selector: 'app-body',
-  standalone:true,
+  selector: 'app-ev-calculator',
   imports: [DecimalPipe],
-  templateUrl: './body.html',
-  styleUrls: ['./body.css']
+  templateUrl: './ev-calculator.html',
+  styleUrl: './ev-calculator.css',
 })
-export class Body implements OnInit {
+export class EVCalculator implements OnInit {
   // expected value per hour
   public EVPH:number=0;
   // total expected value
@@ -25,14 +24,6 @@ count() {
 
   const listCount= document.getElementsByClassName("input-EV-calc");
   const ArrayCount = Array.from(listCount);
-  let totalSum=0;
-
-  for(let item of ArrayCount) {
-    const input= item as HTMLInputElement
-    totalSum+= Number(input.value) || 0;
-  }
-
-  console.log("The total is", totalSum)
 
   interface DataItem {
     edge:number;
@@ -69,7 +60,7 @@ count() {
   let HP_g=document.getElementById("HP") as HTMLInputElement;
   let BKR_g=document.getElementById("BKR") as HTMLInputElement;
   // hands per hour
-  let HPH=Number(HPH_g?.value)|| 200;
+  let HPH=Number(HPH_g?.value) || 200;
   // hands played
   let HP=Number(HP_g?.value) || 1;
   // bank roll

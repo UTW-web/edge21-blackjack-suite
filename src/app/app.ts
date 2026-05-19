@@ -1,17 +1,15 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
-import { Header } from './header/header';
-import { Body } from './body/body';
-import { Footer } from './footer/footer';
+import { EVCalculator } from "./ev-calculator/ev-calculator";
+import { BlackJackGame } from './black-jack-game/black-jack-game';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, Header, Body, Footer],
+  imports: [EVCalculator, BlackJackGame],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('BlackJack');
+  Active_screen = "main"
 }

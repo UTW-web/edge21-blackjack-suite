@@ -1,10 +1,12 @@
 <main>
     <div>
         <form class="Container">
-            <div class="Align-Container">
+    <div class="Box">
+            <div class="Align-Title">
                 <h1>True Count:</h1>
                 <h1>Bet:</h1>
             </div>
+    <div class="Box">
             <div class="Align-Container">
                 <label for="T0">True Count 0:</label>
                 <input (input)="count()" class="input-EV-calc" type="number" id="T0" name="T0" >
@@ -37,10 +39,10 @@
                 <label for="T7">True Count 7:</label>
                 <input (input)="count()" class="input-EV-calc" type="number" id="T7" name="T7">
             </div>
-
-
+        </div>
+        </div>
             <div class="Align-Container">
-                <label for="HPH">Estimate:Hands Per Hour:</label>
+                <label for="HPH">Hands Per Hour:</label>
                 <input (input)="count()" class="input-EV-calc" type="number" id="HPH" name="HPH" value="200">
             </div>
             <div class="Align-Container">
@@ -51,9 +53,10 @@
                 <label for="BKR">Total Bank Roll:</label>
                 <input (input)="count()" class="input-EV-calc" type="number" id="BKR" name="BKR">
             </div>
-        </form>
+        
+</form>
     </div>
-    <div>
+    <div class="Output-ev">
         <output>Expected value per hour: {{EVPH | number:'1.2-2'}} €/hour</output><br>
         <output>Total Expected value: {{TEV | number:'1.2-2'}} €/TEV</output><br>
         <output>Risk of ruin(ROR): {{ROR | number:'1.2-2'}}%</output><br>

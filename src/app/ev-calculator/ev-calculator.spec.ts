@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Body } from './body';
+import { EVCalculator } from './ev-calculator';
 
-describe('Body', () => {
-  let component: Body;
-  let fixture: ComponentFixture<Body>;
+describe('EVCalculator', () => {
+  let component: EVCalculator;
+  let fixture: ComponentFixture<EVCalculator>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Body]
+      imports: [EVCalculator]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Body);
+    fixture = TestBed.createComponent(EVCalculator);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

@@ -1,0 +1,35 @@
+main {
+    background-color:brown;
+}
+.input-EV-calc {
+    background-color:rgb(219, 35, 35);
+    color:black;
+    width:5rem;
+    border:1px solid rgb(67, 17, 27);
+}
+.Container {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.Align-Container {
+    display:flex;
+    flex-direction:center;
+    padding:10px;
+    gap:10px;
+}
+.Align-Title {
+    display:flex;
+    flex-direction:center;
+    padding:10px;
+    gap:3rem;
+    padding-right:35px;
+    border:1px solid black;
+}
+.Output-ev {
+    border: 2px solid black;
+}
+.Box {
+    border:1px solid black;
+}

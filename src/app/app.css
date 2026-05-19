@@ -1,0 +1,61 @@
+main {
+    background-color:brown;
+    height: 100vh;
+}
+.main-home {
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    font-family: math;
+}
+.Grid {
+    display:grid;
+    grid-template-columns: repeat(1,1fr);
+    justify-content:center;
+    align-items: center;
+    gap:1rem;
+    margin-top:auto;
+    margin-bottom:auto;
+}
+.Grid-2 {
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    justify-content:center;
+    align-items: center;
+    gap:1rem;
+    margin-top:auto;
+    margin-bottom:auto;
+}
+.Menu-Bts {
+    background-color: rgb(230, 6, 6);
+    color: black;
+    border-radius:0.2rem;
+    cursor:pointer;
+    padding: 0.4rem;
+    font-size:1.2rem;
+    border:1px solid rgb(67, 17, 27);
+
+}
+.Back:hover,
+.Menu-Bts:hover {
+        background-color:rgb(197, 9, 9);
+}
+.Title {
+    color:black;
+    font-size:2rem;
+    padding-top:1.5rem;
+}
+
+.Back {
+    background-color: rgb(230, 6, 6);
+    border-radius:0.2rem;
+    cursor:pointer;
+    padding:0.4rem;
+    color:black;
+    font-size:1.2rem;
+    border:1px solid rgb(67, 17, 27);
+}
+footer {
+    font-family:math;
+}

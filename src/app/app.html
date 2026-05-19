@@ -1,4 +1,49 @@
-<app-header></app-header>
-<app-body></app-body>
-<app-footer></app-footer>
-<router-outlet />
+@if (Active_screen === 'main') {
+  <main class="main-home">
+    <h1 class="Title">EDGE 21</h1>
+    <p class="Subtitle">It's not gambling. It's math.</p>
+    <div class="Grid">
+        <button (click)="Active_screen = 'game'" class="Menu-Bts">Play BlackJack</button>
+        <div class="Grid-2">
+            <button (click)="Active_screen = 'calculator'" class="Menu-Bts">EV Calculator</button>
+            <button (click)="Active_screen = 'charts'" class="Menu-Bts">Charts</button>
+        </div>
+        <button (click)="Active_screen = 'info'" class="Menu-Bts">How this App works...</button>
+    </div>
+    <footer>
+    <h6>Built for Players Who Think • A UTW Project</h6>
+    </footer>
+  </main>
+  
+}
+
+
+
+
+
+
+@if (Active_screen === 'calculator') {
+  <main>
+    <button (click)="Active_screen = 'main'" class="Back">Back</button>
+    <app-ev-calculator></app-ev-calculator>
+  </main>
+}
+
+@if (Active_screen === 'game') {
+  <main>
+    <button (click)="Active_screen = 'main'" class="Back">Back</button>
+    <app-black-jack-game></app-black-jack-game>
+  </main>
+}
+
+@if (Active_screen === 'charts') {
+  <main>
+    <button (click)="Active_screen = 'main'" class="Back">Back</button>
+  </main>
+}
+
+@if (Active_screen === 'info') {
+  <main>
+    <button (click)="Active_screen = 'main'" class="Back">Back</button>
+  </main>
+}
