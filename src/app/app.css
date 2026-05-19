@@ -44,7 +44,7 @@ main {
 .Title {
     color:black;
     font-size:2rem;
-    padding-top:1.5rem;
+    padding-top:4rem;
 }
 
 .Back {
@@ -58,4 +58,5 @@ main {
 }
 footer {
     font-family:math;
+    padding-bottom:4rem;
 }
