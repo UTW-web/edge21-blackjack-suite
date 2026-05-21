@@ -1,11 +1,16 @@
 main {
     padding-top:4rem;
     background-color: #101820;
-    padding-bottom:4rem;
+    padding-bottom:11.5rem;
 }
 .Settings {
     padding-top:2rem;
+    padding-bottom:2rem;
     font-size:1.5rem;
+    color:Black;
+}
+.white {
+  background-color: rgb(222, 220, 220) !important;
 }
 .Box {
     display:flex;
@@ -32,43 +37,30 @@ main {
     justify-content: flex-end;
 }
 .decision {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(90px, 90px));
+    display:flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
+    position:fixed;
+    top:50%;
+    transform: translateY(-50%);
     gap: 0.5rem;
     position: fixed;
-    bottom: 0;
-    width: 100%;
+    width: auto;
+    height:auto;
     padding: 0.8rem;
-    background: #2c3e50;
     box-shadow: 0 -4px 15px rgba(0,0,0,0.3);
 }
 .buttons-player {
-    padding: clamp(0.5rem, 2vw, 1rem) clamp(0.75rem, 3vw, 1.5rem);
-    font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+    padding: clamp(0.3rem, 1.8vw, 1rem);
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     font-weight: 600;
-    border-radius: 0.4rem;
     cursor: pointer;
     color: white;
-    box-shadow: 0.2rem 0.4rem rgba(0,0,0,0.2);
-    min-width: 60px;
-    max-width: 150px;
+    min-width: 90px;
+    max-width: 120px;
+    background-color: darkgreen;
 }
-.buttons-player:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 10px rgba(0,0,0,0.3);
-    filter: brightness(1.1);
-}
-.buttons-player:active {
-    transform: translateY(0);
-}
-.btn-hit { background: linear-gradient(135deg, #e74c3c, #c0392b); }
-.btn-stand { background: linear-gradient(135deg, #3498db, #2980b9); }
-.btn-double { background: linear-gradient(135deg, #a1871d, #f39c12); }
-.btn-split { background: linear-gradient(135deg, #2ecc71, #27ae60); }
-.btn-insurance { background: linear-gradient(135deg, #e67e22, #d35400); }
-.btn-surr { background: linear-gradient(135deg, #95a5a6, #7f8c8d); }
-
 .unavailable {
     color:grey;
 }
@@ -106,16 +98,16 @@ main {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: .2s;
+  transition: .2s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: green;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px green;
 }
 
 input:checked + .slider:before {
@@ -146,7 +138,7 @@ input:checked + .slider:before {
     padding: 1rem;
     font-size:1.5rem;
     height:4rem;
-    width:40%;
+    width:55%;
     max-width: 15rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }

@@ -51,8 +51,7 @@ main {
     background-color:grey;
     font-weight:600;
     padding:0.4rem;
-    width: 90%;
-    max-width: 35rem;
+    width: clamp(15rem, 90vw, 35rem);
 }
 .explain {
     width: 90%;

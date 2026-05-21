@@ -1,5 +1,5 @@
 @if (active_screen === 'rules' ) {
-<main>
+<main class="white">
     <div class="Box">
         <button class="Play-Btn" (click)="StartGame('game')">Start</button>
         <h1 class="Settings">Settings</h1>
@@ -62,9 +62,9 @@
         <button (click)="engine()" id="hit" class="buttons-player btn-hit">HIT</button>
         <button (click)="engine()" id="stand" class="buttons-player btn-stand">STD</button>
         <button (click)="engine()" id="double" class="buttons-player btn-double">DBL</button>
-            <button (click)="engine()" id="split" class="buttons-player btn-split">SPL</button>
-            <button (click)="engine()" id="surrender" class="buttons-player btn-surr">SUR</button>
-            <button (click)="engine()" id="insurance" class="buttons-player btn-insurance">INS</button>
+        <button (click)="engine()" id="split" class="buttons-player btn-split">SPL</button>
+        <button (click)="engine()" id="surrender" class="buttons-player btn-surr">SUR</button>
+        <button (click)="engine()" id="insurance" class="buttons-player btn-insurance">INS</button>
         </div>
     </div>
 </main>
