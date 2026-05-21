@@ -6,7 +6,7 @@
         <div class="Box1">
             <p>Betting</p>
         <label class="switch right">
-            <input type="checkbox" checked>
+            <input type="checkbox" [(ngModel)]="BET">
             <span class="slider round"></span>
         </label>
     </div>
@@ -17,14 +17,14 @@
     <div class="Box1">
         <p>Dealer Hits Soft 17</p>
         <label class="switch right">
-            <input type="checkbox">
+            <input type="checkbox" id="DHS17" [(ngModel)]="DHS17">
             <span class="slider round"></span>
         </label>
     </div>
     <div class="Box1">
         <p>Can Double After Split</p>
         <label class="switch right">
-            <input type="checkbox" checked>
+            <input type="checkbox" [(ngModel)]="CDAS">
             <span class="slider round"></span>
         </label>
     </div>
@@ -34,14 +34,14 @@
     <div class="Box1">
         <p>Resplitting Aces</p>
         <label class="switch right">
-            <input type="checkbox" checked>
+            <input type="checkbox" [(ngModel)]="RA">
             <span class="slider round"></span>
         </label>
     </div>
     <div class="Box1">
         <p>Surrender</p>
         <label class="switch right">
-            <input type="checkbox">
+            <input type="checkbox" [(ngModel)]="SURR">
             <span class="slider round"></span>
         </label>
     </div>

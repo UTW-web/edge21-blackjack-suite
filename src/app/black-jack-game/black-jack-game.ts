@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 interface DataItem {
   y: number;
@@ -7,7 +8,7 @@ interface DataItem {
 
 @Component({
   selector: 'app-black-jack-game',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './black-jack-game.html',
   styleUrl: './black-jack-game.css',
 })
@@ -22,13 +23,20 @@ export class BlackJackGame implements OnInit {
     this.engine();
   };
 
+  BET: boolean = true;
+  NOD=undefined;
+  DHS17: boolean = true;
+  CDAS: boolean = true;
+  DA= undefined;
+  RA: boolean = false;
+  SURR: boolean = true;
   
   engine() {
     //rules
 
     // Betting
-    let BET
-    //Number of decks
+    
+   //Number of decks
     let NOD
     //Dealer hits soft 17
     let DHS17
