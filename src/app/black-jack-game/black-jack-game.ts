@@ -24,34 +24,61 @@ export class BlackJackGame implements OnInit {
   };
 
   BET: boolean = true;
-  NOD=undefined;
+  NOD: number=8;
   DHS17: boolean = true;
   CDAS: boolean = true;
-  DA= undefined;
+  DA: boolean = true;
   RA: boolean = false;
   SURR: boolean = true;
   
   engine() {
-    //rules
-
-    // Betting
     
-   //Number of decks
-    let NOD
-    //Dealer hits soft 17
-    let DHS17
-    //Can Double After Split
-    let CDAS
-    //Doubling Available
-    let DA
-    //resplitting aces
-    let RA
-    //Surrender
-    let SURR
-    //cards
+    //card objects
+    const card_patterns = ['Hearts', 'Diamonds', 'Spades', 'Clubs'];
+    const card_value: Record<string, number> = {
+      '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10,
+      'J': 10, 'Q': 10, 'K': 10, 'A': 11
+    };
 
-    //input
+    const values = Object.keys(card_value);
 
-    //
+    const deck = card_patterns.flatMap(card_pattern =>
+      values.map(value => ({
+        card_pattern,
+        value,
+        points: card_value[value]
+      }))
+    );
+
+    // shuffle(FIsher-Yates algorithm)
+    function shuffle(array: any[]) {
+      for (let i = array.length-1;i>0;i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+    shuffle(deck)
+
+    //Hands and deal
+    let playerHand: any[] = [];
+    let dealerHand: any[] = [];
+
+    function drawCard(hand: any[]) {
+      if (deck.length > 0) {
+        const card=deck.pop();
+        if (card) {
+          hand.push(card);
+        } else {
+          console.log("Deck is empty")
+        }
+      }
+    }
+
+
+
+
+
+
+
   };
 };

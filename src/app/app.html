@@ -1,5 +1,5 @@
 @if (Active_screen === 'main') {
-  <main class="main-home" >
+  <main class="main-home main-color" >
     <h1 class="Title">EDGE 21</h1>
     <p class="Subtitle">It's not gambling. It's math.</p>
     <div class="Grid">
@@ -23,7 +23,7 @@
 
 
 @if (Active_screen === 'calculator') {
-  <main>
+  <main class="main-color">
     <button (click)="Active_screen = 'main'" class="Back">Back</button>
     <app-ev-calculator></app-ev-calculator>
   </main>
@@ -37,13 +37,13 @@
 }
 
 @if (Active_screen === 'charts') {
-  <main>
+  <main class="main-color">
     <app-charts (goHome)="Active_screen = 'main'"></app-charts>
   </main>
 }
 
 @if (Active_screen === 'info') {
-  <main>
+  <main class="main-color">
     <button (click)="Active_screen = 'main'" class="Back">Back</button>
     <app-info></app-info>
   </main>

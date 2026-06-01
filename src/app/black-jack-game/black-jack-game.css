@@ -9,8 +9,13 @@ main {
     font-size:1.5rem;
     color:Black;
 }
-.white {
-  background-color: rgb(222, 220, 220) !important;
+.settings-color {
+  background-color: rgb(222, 220, 220);
+  height:100dvh;
+}
+.main-color {
+    background-color: #101820;
+    height:100dvh;
 }
 .Box {
     display:flex;

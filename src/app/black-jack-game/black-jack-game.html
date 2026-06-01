@@ -1,5 +1,5 @@
 @if (active_screen === 'rules' ) {
-<main class="white">
+<main class="settings-color">
     <div class="Box">
         <button class="Play-Btn" (click)="StartGame('game')">Start</button>
         <h1 class="Settings">Settings</h1>
@@ -11,8 +11,14 @@
         </label>
     </div>
     <div class="Box1">
-        <p>Number of Decks</p>
-
+        <label for="NOD">Number of decks</label>
+            <select id="NOD" name="NOD" [(ngModel)]="NOD">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="6">6</option>
+                <option value="8">8</option>
+            </select>
     </div>
     <div class="Box1">
         <p>Dealer Hits Soft 17</p>
@@ -29,7 +35,11 @@
         </label>
     </div>
     <div class="Box1">
-        <p>Doubling Available</p>
+        <label for="NOD">Doubling Available</label>
+            <select id="DA" name="DA" [(ngModel)]="DA">
+                <option [ngValue]="true">Yes</option>
+                <option [ngValue]="false">No</option>
+            </select>
     </div>
     <div class="Box1">
         <p>Resplitting Aces</p>
@@ -52,7 +62,7 @@
 
 }
 @if (active_screen === 'game' ) {
-<main>
+<main class="main-color">
     <div class="dealer">
 
     </div>

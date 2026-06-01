@@ -4,7 +4,7 @@
   box-sizing: border-box;
   color:white;
 }
-main {
+.main-color {
     background-color: #101820;
     height:100dvh;
 }
