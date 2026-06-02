@@ -62,7 +62,7 @@ main {
     font-weight: 600;
     cursor: pointer;
     color: white;
-    min-width: 90px;
+    min-width: 80px;
     max-width: 120px;
     background-color: darkgreen;
 }
@@ -154,4 +154,77 @@ input:checked + .slider:before {
 .Play-Btn:active {
     transform: translateY(0);
     background-color: #24492f;
+}
+.card_player,
+.card_dealer {
+  position:relative;
+  border:2px solid black;
+  width: clamp(80px, 10vw, 150px);
+  font-size: clamp(15px, 2vw, 23px);
+  height: auto;
+  aspect-ratio: 2 / 3.5;
+  background-color:white;
+  color:black;
+  border-radius:0.4rem;
+  padding:5px;
+}
+.card_dealer {
+  transform: rotate(180deg);
+}
+.down {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  transform: rotate(180deg);
+
+}
+.card-container_player,
+.card-container_dealer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap:20px;
+}
+
+.card-container_player {
+  bottom: 20px;
+}
+
+.card-container_dealer {
+  top: 20px;
+}
+.card_player,
+.card_dealer {
+  margin-left: -60px;
+}
+.card_player:first-child,
+.card_dealer:first-child {
+  margin-left: 0;
+}
+.card_player:hover,
+.card_dealer:hover {
+  z-index: 10;
+}
+.overlay {
+  position: fixed; /* Da prekrije celo okno */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Temno ozadje */
+  display: flex;
+  justify-content: center; /* Centriranje na sredino */
+  align-items: center;
+  z-index: 1000; /* Da je zagotovo vrh vsega */
+}
+
+.shuffling {
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  font-family: sans-serif;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  color:black;
 }

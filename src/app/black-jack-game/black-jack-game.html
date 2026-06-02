@@ -13,11 +13,11 @@
     <div class="Box1">
         <label for="NOD">Number of decks</label>
             <select id="NOD" name="NOD" [(ngModel)]="NOD">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="4">4</option>
-                <option value="6">6</option>
-                <option value="8">8</option>
+                <option [ngValue]="1">1</option>
+                <option [ngValue]="2">2</option>
+                <option [ngValue]="4">4</option>
+                <option [ngValue]="6">6</option>
+                <option [ngValue]="8">8</option>
             </select>
     </div>
     <div class="Box1">
@@ -63,19 +63,51 @@
 }
 @if (active_screen === 'game' ) {
 <main class="main-color">
-    <div class="dealer">
-
-    </div>
 
     <div class="player">
-    <div class="decision">
-        <button (click)="engine()" id="hit" class="buttons-player btn-hit">HIT</button>
-        <button (click)="engine()" id="stand" class="buttons-player btn-stand">STD</button>
-        <button (click)="engine()" id="double" class="buttons-player btn-double">DBL</button>
-        <button (click)="engine()" id="split" class="buttons-player btn-split">SPL</button>
-        <button (click)="engine()" id="surrender" class="buttons-player btn-surr">SUR</button>
-        <button (click)="engine()" id="insurance" class="buttons-player btn-insurance">INS</button>
+        <div class="decision">
+            <button (click)="drawCard(playerHand)" [disabled]="isShuffling" id="hit" class="buttons-player btn-hit">HIT</button>
+            <button  id="stand" class="buttons-player btn-stand">STD</button>
+            <button  id="double" class="buttons-player btn-double">DBL</button>
+            <button  id="split" class="buttons-player btn-split">SPL</button>
+            <button  id="surrender" class="buttons-player btn-surr">SUR</button>
+            <button  id="insurance" class="buttons-player btn-insurance">INS</button>
         </div>
     </div>
+    <div class="card-container_dealer" name="dealerHand">
+        @for (card of dealerHand; track card.id) {
+        <div class="card_dealer">
+            <div class="value">{{card.value}}</div> 
+                <div>{{card.card_pattern}}</div>
+            <div class="down">
+                <div class="value">{{card.value}}</div> 
+                <div>{{card.card_pattern}}</div>
+            </div>
+        </div>
+        }
+    </div>
+    
+    <div class="card-container_player" name="playerHand">
+        @for (card of playerHand; track card.id) {
+        <div class="card_player">
+            <div class="value">{{card.value}}</div> 
+                <div>{{card.card_pattern}}</div>
+            <div class="down">
+                <div class="value">{{card.value}}</div> 
+                <div>{{card.card_pattern}}</div>
+            </div>
+        </div>
+        }
+    </div>
+
+    @if (isShuffling) {
+        <div class="overlay">
+        <div class="shuffling">
+        <h2>Shuffling cards...</h2>
+        </div>
+        </div>
+    }
+
+
 </main>
 }
