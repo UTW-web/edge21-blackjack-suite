@@ -64,26 +64,45 @@
 @if (active_screen === 'game' ) {
 <main class="main-color">
 
-    <div class="player">
-        <div class="decision">
-            <button (click)="drawCard(playerHand)" [disabled]="isShuffling" id="hit" class="buttons-player btn-hit">HIT</button>
-            <button  id="stand" class="buttons-player btn-stand">STD</button>
-            <button  id="double" class="buttons-player btn-double">DBL</button>
-            <button  id="split" class="buttons-player btn-split">SPL</button>
-            <button  id="surrender" class="buttons-player btn-surr">SUR</button>
-            <button  id="insurance" class="buttons-player btn-insurance">INS</button>
-        </div>
-    </div>
-    <div class="card-container_dealer" name="dealerHand">
-        @for (card of dealerHand; track card.id) {
-        <div class="card_dealer">
-            <div class="value">{{card.value}}</div> 
-                <div>{{card.card_pattern}}</div>
-            <div class="down">
-                <div class="value">{{card.value}}</div> 
-                <div>{{card.card_pattern}}</div>
+    @if (gameOver) {
+        <div class="dimmed-background">
+            <div class="result-overlay">
+                <h1>{{gameResult}}</h1>
+                <button (click)="resetHand()" class="new-hand">New Hand</button>
             </div>
         </div>
+    }
+    
+
+    <div class="player">
+        <fieldset [disabled]="isShuffling || !PlayersTurn">
+            <div class="decision">
+                <button (click)="Hit()"  id="hit" class="buttons-player">HIT</button>
+                <button  (click)="Stand()" id="stand" class="buttons-player">STD</button>
+                <button  id="double" class="buttons-player">DBL</button>
+                <button  id="split" class="buttons-player">SPL</button>
+                <button  id="surrender" class="buttons-player">SUR</button>
+                <button  id="insurance" class="buttons-player">INS</button>
+            </div>
+        </fieldset>
+    </div>
+    <div class="card-container_dealer" name="dealerHand">
+        @for (card of dealerHand; track card.id; let  i = $index) {
+            @if (i === 0 && !gameOver) {
+                <div class="card_dealer">
+                    <div class="back_card_pattern"></div>
+                </div>
+            }
+            @else {
+               <div class="card_dealer">
+                <div class="value">{{card.value}}</div> 
+                        <div>{{card.card_pattern}}</div>
+                    <div class="down">
+                        <div class="value">{{card.value}}</div> 
+                        <div>{{card.card_pattern}}</div>
+                    </div>
+                </div> 
+            }
         }
     </div>
     

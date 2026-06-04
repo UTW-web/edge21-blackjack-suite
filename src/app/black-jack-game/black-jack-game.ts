@@ -8,6 +8,7 @@ interface DataItem {
 
 @Component({
   selector: 'app-black-jack-game',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './black-jack-game.html',
   styleUrl: './black-jack-game.css',
@@ -24,7 +25,9 @@ export class BlackJackGame implements OnInit {
   }
   ngOnInit(): void {
   };
+
 startGame() {
+    this.gameOver=false;
     this.playerHand = [];
     this.dealerHand = [];
     this.deck = [];
@@ -43,6 +46,16 @@ startGame() {
 
     this.cdr.detectChanges();
 }
+endGame (message:string) {
+  this.gameOver=true;
+  this.gameResult = message;
+  this.cdr.detectChanges();
+};
+
+  gameOver: boolean=false;
+  gameResult: string = "";
+  PlayersTurn: boolean=true;
+
   BET: boolean = true;
   NOD: number=8;
   DHS17: boolean = true;
@@ -108,20 +121,21 @@ drawCard(hand: any[]) {
     this.cards()
     this.shuffle()
     this.isShuffling = true;
-    
     setTimeout(() => {
       this.isShuffling = false;
       this.cdr.detectChanges();
       this.drawCard(hand);
     },2000);
-
     return;
   }
   const card=this.deck.pop();
   if (card) {
+
     hand.push(card);
     this.playerValue = this.sum_card_value(this.playerHand);
     this.dealerValue = this.sum_card_value(this.dealerHand);
+
+    this.rules()
     this.cdr.detectChanges();
   }
 };
@@ -148,9 +162,58 @@ rules() {
   const dealerValue=this.sum_card_value(this.dealerHand);
 
   if (playerValue > 21) {
-
+    this.gameResult= "LOST - By BUST";
+    this.gameOver=true;
+    this.PlayersTurn=false;
+    this.cdr.detectChanges();
   }
-}
+  this.cdr.detectChanges();
+};
+Stand() {
+  this.PlayersTurn=false;
 
+  while (this.sum_card_value(this.dealerHand) < 17) {
+    this.drawCard(this.dealerHand);
+  }
+
+  const playerValue=this.sum_card_value(this.playerHand);
+  const dealerValue=this.sum_card_value(this.dealerHand);
+
+  if (dealerValue > 21) {
+    this.gameResult = "DEALER BUST - WON";
+  } else if (playerValue > dealerValue) {
+    this.gameResult = "WON"
+  } else if (playerValue < dealerValue) {
+    this.gameResult = "LOST"
+  } else {
+    this.gameResult = "PUSH (Tie)"
+  }
+
+  this.gameOver = true;
+  this.cdr.detectChanges();
+};
+resetHand() {
+  this.gameOver=false;
+  this.PlayersTurn=true;
+
+  this.playerHand = [];
+  this.dealerHand = [];
+
+  this.playerValue = 0;
+  this.dealerValue = 0;
+
+  this.drawCard(this.playerHand);
+  this.drawCard(this.playerHand);
+  this.drawCard(this.dealerHand);
+  this.drawCard(this.dealerHand);
+
+  this.cdr.detectChanges();
+};
+Hit () {
+  if (!this.PlayersTurn || this.isShuffling) return;
+
+  this.drawCard(this.playerHand);
+};
 
 };
+

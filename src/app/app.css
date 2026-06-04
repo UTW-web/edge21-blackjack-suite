@@ -1,24 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color:white;
-}
-.main-color {
-    background-color: #101820;
-    height:100dvh;
-}
-.Menu-Bts {
-    background-color: #2d5a5a;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius:0.2rem;
-    cursor:pointer;
-    padding: 0.8rem;
-    font-size:1.2rem;
-    height:3.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-}
 .Back {
     background-color: #2d5a5a;
     border-radius:0.2rem;
@@ -37,44 +16,4 @@
 .Menu-Bts:active {
     transform: translateY(0);
     background-color: #244949;
-}
-.main-home {
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content: center;
-    font-family: math;
-}
-.Grid {
-    display:grid;
-    grid-template-columns: repeat(1,1fr);
-    justify-content:center;
-    align-items: center;
-    gap:0.5rem;
-    margin-top:auto;
-    margin-bottom:auto;
-}
-.Grid-2 {
-    display:grid;
-    grid-template-columns: repeat(2,1fr);
-    justify-content:center;
-    align-items: center;
-    gap:0.5rem;
-    margin-top:auto;
-    margin-bottom:auto;
-}
-.Menu-Bts-Play {
-    height:5rem;
-}
-.Title {
-    font-size:3rem;
-    padding-top:4rem;
-    color:white;
-}
-.Subtitle {
-    font-size:1rem;
-}
-footer {
-    font-family:math;
-    margin-bottom:7rem;
 }

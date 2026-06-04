@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 @Component({
   selector: 'app-ev-calculator',
+  standalone: true,
   imports: [DecimalPipe],
   templateUrl: './ev-calculator.html',
   styleUrl: './ev-calculator.css',

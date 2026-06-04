@@ -5,20 +5,32 @@ import { EVCalculator } from "./ev-calculator/ev-calculator";
 import { BlackJackGame } from './black-jack-game/black-jack-game';
 import { Charts } from "./charts/charts";
 import { Info } from "./info/info";
+import { Home } from "./home/home";
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [EVCalculator, BlackJackGame, Charts, Info],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
   
 })
 export class App implements OnInit {
-  Active_screen = "main"
-
-  // SWUpdate
-  constructor(private swUpdate: SwUpdate) {}
+  Main=false;
+  constructor(
+    private router: Router,
+    private swUpdate: SwUpdate
+  ) {
+    this.router.events.subscribe(event=> {
+      if (event instanceof NavigationEnd) {
+        this.Main = event.url !== '/'
+      }
+    })
+  };
+  Back () {
+    this.router.navigate(['/'])
+  };
 
   ngOnInit() {
     // active checking for updates
