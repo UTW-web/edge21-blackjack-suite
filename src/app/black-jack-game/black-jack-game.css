@@ -231,7 +231,7 @@ input:checked + .slider:before {
 }
 .back_card_pattern {
   position:absolute;
-  background-image: url("/back of card pattern/back_card_pattern.jpg");
+  background-image: url("/back_card_pattern/back_card_pattern.jpg");
   top: 0;
   left: 0;
   background-size: 100% 100%;
