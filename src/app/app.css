@@ -6,6 +6,7 @@
     font-size:1.2rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     position:fixed;
+    z-index:10000;
 }
 .Back:hover,
 .Menu-Bts:hover {
