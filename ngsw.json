@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1788902097687,
+  "timestamp": 1788902710957,
   "index": "/edge21-blackjack-suite/index.html",
   "assetGroups": [
     {
@@ -12,7 +12,7 @@
       },
       "urls": [
         "/edge21-blackjack-suite/index.html",
-        "/edge21-blackjack-suite/main-YFODQEIP.js",
+        "/edge21-blackjack-suite/main-C6RNU3LV.js",
         "/edge21-blackjack-suite/manifest.webmanifest",
         "/edge21-blackjack-suite/styles-C2EMLPQA.css"
       ],
@@ -34,7 +34,7 @@
         "/edge21-blackjack-suite/S17/S17_1.jpeg",
         "/edge21-blackjack-suite/S17/S17_2.jpeg",
         "/edge21-blackjack-suite/S17/S17_3.jpeg",
-        "/edge21-blackjack-suite/back_card_pattern/back_card_pattern.jpg",
+        "/edge21-blackjack-suite/basic/back_card_pattern.jpg",
         "/edge21-blackjack-suite/basic/basic.jpeg",
         "/edge21-blackjack-suite/basic/basic1.jpeg",
         "/edge21-blackjack-suite/basic/basic2.jpeg",
@@ -68,7 +68,7 @@
     "/edge21-blackjack-suite/S17/S17_1.jpeg": "bd2b1f21aac7302e7cee02c5f2456503dbb2e3a6",
     "/edge21-blackjack-suite/S17/S17_2.jpeg": "d2f014c2fa787a8247bb87c791833c29c0ae4852",
     "/edge21-blackjack-suite/S17/S17_3.jpeg": "3fcfe08ff23da1278de20335c89338d035e42319",
-    "/edge21-blackjack-suite/back_card_pattern/back_card_pattern.jpg": "34745854a3ae5105f7a3e36d21040325b1302495",
+    "/edge21-blackjack-suite/basic/back_card_pattern.jpg": "34745854a3ae5105f7a3e36d21040325b1302495",
     "/edge21-blackjack-suite/basic/basic.jpeg": "69ff9f84fa54bcac875ec3a45410b341a90b2f51",
     "/edge21-blackjack-suite/basic/basic1.jpeg": "e8b4166220c7eb2e1f1ba3a185712a33b5dde230",
     "/edge21-blackjack-suite/basic/basic2.jpeg": "5282ed4081f64b3b33fb54c1cc5e5867efa36e5a",
@@ -88,8 +88,8 @@
     "/edge21-blackjack-suite/icons/apple-touch-icon.png": "684300fc377b688cf2785fb367fe29c8d61e29b7",
     "/edge21-blackjack-suite/icons/favicon-16x16.png": "af5988f7cd50a4ee588266ee537db5f9f9bede15",
     "/edge21-blackjack-suite/icons/favicon-32x32.png": "facc87a1fa2b01f2414e6a529f2c2e0714762a84",
-    "/edge21-blackjack-suite/index.html": "8d1bfcee22b1c4089b053a8ee05a81a3cd334126",
-    "/edge21-blackjack-suite/main-YFODQEIP.js": "db170910be59434b5e36d07da99184921cd20d75",
+    "/edge21-blackjack-suite/index.html": "c5a8327b3568b1163c1b4f2939091b5cca39c912",
+    "/edge21-blackjack-suite/main-C6RNU3LV.js": "c0ef7152d942614dba39c4313f64f3d31c491e35",
     "/edge21-blackjack-suite/manifest.webmanifest": "7763ff9a4d99d4817df608a73d70f7a43a0ad8e2",
     "/edge21-blackjack-suite/styles-C2EMLPQA.css": "c04f77e36ed21c2af8e84876892e3f99847d6418"
   },
