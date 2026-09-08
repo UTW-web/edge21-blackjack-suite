@@ -2,6 +2,7 @@ main {
     background-color:#101820;
     color:#d1d8e0;
     padding-top:4rem;
+    padding-bottom:1.5rem;
 }
 .input-EV-calc {
     background-color:#304d66;
@@ -32,7 +33,6 @@ main {
 }
 .Output-ev {
     border: 2px solid white;
-    margin-bottom:2rem;
     font-size:1.2rem;
 }
 .Box {
