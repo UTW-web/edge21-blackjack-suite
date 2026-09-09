@@ -169,10 +169,32 @@ rules() {
   }
   this.cdr.detectChanges();
 };
+S17(hand:any []) {
+    let S17 = null;
+    let sum_value=0;
+    let aces=0;
+
+    for (const cards of hand) {
+      sum_value+=cards.points;
+      if (cards.value === 'A') aces+=1;
+    }
+
+    while (sum_value>21 && aces>0) {
+      sum_value-=10
+      aces-=1
+    }
+    if (sum_value === 17 && (aces === 1|| aces===2)) {
+      S17 = true;
+    }
+
+    return S17;
+
+};
 Stand() {
   this.PlayersTurn=false;
 
-  while (this.sum_card_value(this.dealerHand) < 17) {
+  while (this.sum_card_value(this.dealerHand) < 17 ||
+   this.sum_card_value(this.dealerHand) === 17 && this.DHS17 && this.S17(this.dealerHand)) {
     this.drawCard(this.dealerHand);
   }
 
