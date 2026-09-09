@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1788902948666,
+  "timestamp": 1788943048583,
   "index": "/edge21-blackjack-suite/index.html",
   "assetGroups": [
     {
@@ -12,7 +12,7 @@
       },
       "urls": [
         "/edge21-blackjack-suite/index.html",
-        "/edge21-blackjack-suite/main-YFODQEIP.js",
+        "/edge21-blackjack-suite/main-NWWDR3JG.js",
         "/edge21-blackjack-suite/manifest.webmanifest",
         "/edge21-blackjack-suite/styles-C2EMLPQA.css"
       ],
@@ -88,8 +88,8 @@
     "/edge21-blackjack-suite/icons/apple-touch-icon.png": "684300fc377b688cf2785fb367fe29c8d61e29b7",
     "/edge21-blackjack-suite/icons/favicon-16x16.png": "af5988f7cd50a4ee588266ee537db5f9f9bede15",
     "/edge21-blackjack-suite/icons/favicon-32x32.png": "facc87a1fa2b01f2414e6a529f2c2e0714762a84",
-    "/edge21-blackjack-suite/index.html": "8d1bfcee22b1c4089b053a8ee05a81a3cd334126",
-    "/edge21-blackjack-suite/main-YFODQEIP.js": "db170910be59434b5e36d07da99184921cd20d75",
+    "/edge21-blackjack-suite/index.html": "3c4398b7708f6df817d18c5d2ea9c7903d98896e",
+    "/edge21-blackjack-suite/main-NWWDR3JG.js": "d03f44b5110479f9546e1f7bf922a716bbaea7bb",
     "/edge21-blackjack-suite/manifest.webmanifest": "7763ff9a4d99d4817df608a73d70f7a43a0ad8e2",
     "/edge21-blackjack-suite/styles-C2EMLPQA.css": "c04f77e36ed21c2af8e84876892e3f99847d6418"
   },
