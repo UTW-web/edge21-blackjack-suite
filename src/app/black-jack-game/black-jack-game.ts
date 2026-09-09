@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 interface DataItem {
   y: number;
@@ -14,7 +15,10 @@ interface DataItem {
   styleUrl: './black-jack-game.css',
 })
 export class BlackJackGame implements OnInit {
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private router: Router,
+  ) {}
 
   
   active_screen = "rules";
@@ -27,6 +31,7 @@ export class BlackJackGame implements OnInit {
   };
 
 startGame() {
+
     this.gameOver=false;
     this.playerHand = [];
     this.dealerHand = [];
@@ -45,6 +50,7 @@ startGame() {
     this.dealerValue = this.sum_card_value(this.dealerHand);
 
     this.cdr.detectChanges();
+    
 }
 endGame (message:string) {
   this.gameOver=true;
@@ -56,7 +62,8 @@ endGame (message:string) {
   gameResult: string = "";
   PlayersTurn: boolean=true;
 
-  BET: boolean = true;
+  BET:boolean = true;
+
   NOD: number=8;
   DHS17: boolean = true;
   CDAS: boolean = true;
@@ -156,7 +163,60 @@ sum_card_value(hand:any []) {
     }
     return sum_value;
 };
+ToggleH17(value: boolean) {
+  console.log("Dealer hits soft 17:", value? "ENABLED" : "DISABLED")
+}
+ToggleBet(value: boolean) {
+  console.log("Betting:", value? "ENABLED" : "DISABLED")
+}
+ToggleSplitAfterDouble(value: boolean) {
+  console.log("Spliting after double:", value? "ENABLED" : "DISABLED")
+}
+ToggleDouble(value: boolean) {
+  console.log("Double:", value? "ENABLED" : "DISABLED")
+}
+ToggleSplitAces(value: boolean) {
+  console.log("Spliting Aces:", value? "ENABLED" : "DISABLED")
+}
+ToggleSurrender(value: boolean) {
+  console.log("Surrender:", value? "ENABLED" : "DISABLED")
+}
 
+bet = 0;
+BankRoll:number = 100000;
+Betting(value: number) {
+  this.bet += value;
+}
+ClearBet() {
+  this.bet = 0;
+}
+Deal() {
+  if (this.bet <= 0) {
+    console.log("Bet cannot be 0 or below");
+    return;
+  }
+
+  if (this.BankRoll < this.bet) {
+    console.log("Not enough Bank Roll");
+    return;
+  }
+
+  this.BET = false;
+}
+EndDrill() {
+  this.router.navigate(['/'])
+}
+Double() {
+  this.bet = this.bet*2;
+  this.drawCard(this.playerHand);
+  this.Stand();
+}
+Surr:boolean = false;
+Surrender() {
+  this.bet = this.bet/2;
+  this.Surr = true;
+  this.Stand();
+}
 rules() {
   const playerValue=this.sum_card_value(this.playerHand);
   const dealerValue=this.sum_card_value(this.dealerHand);
@@ -201,10 +261,14 @@ Stand() {
   const playerValue=this.sum_card_value(this.playerHand);
   const dealerValue=this.sum_card_value(this.dealerHand);
 
-  if (dealerValue > 21) {
-    this.gameResult = "DEALER BUST - WON";
+  if (this.Surr) {
+    this.gameResult = "Surrenderd"
+  }else if (dealerValue > 21) {
+    this.gameResult = "DEALER BUST - WON"; 
+    this.BankRoll += this.bet*2
   } else if (playerValue > dealerValue) {
     this.gameResult = "WON"
+    this.BankRoll += this.bet*2
   } else if (playerValue < dealerValue) {
     this.gameResult = "LOST"
   } else {
@@ -228,6 +292,9 @@ resetHand() {
   this.drawCard(this.playerHand);
   this.drawCard(this.dealerHand);
   this.drawCard(this.dealerHand);
+
+  this.BET = true;
+  this.BankRoll -= this.bet;
 
   this.cdr.detectChanges();
 };

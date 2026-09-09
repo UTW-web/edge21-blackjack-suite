@@ -6,7 +6,7 @@
         <div class="Box1">
             <p>Betting</p>
         <label class="switch right">
-            <input type="checkbox" [(ngModel)]="BET">
+            <input type="checkbox" [(ngModel)]="BET" (ngModelChange)="ToggleBet($event)">
             <span class="slider round"></span>
         </label>
     </div>
@@ -23,20 +23,20 @@
     <div class="Box1">
         <p>Dealer Hits Soft 17</p>
         <label class="switch right">
-            <input type="checkbox" id="DHS17" [(ngModel)]="DHS17">
+            <input type="checkbox" id="DHS17" [(ngModel)]="DHS17" (ngModelChange)="ToggleH17($event)">
             <span class="slider round"></span>
         </label>
     </div>
     <div class="Box1">
         <p>Can Double After Split</p>
         <label class="switch right">
-            <input type="checkbox" [(ngModel)]="CDAS">
+            <input type="checkbox" [(ngModel)]="CDAS" (ngModelChange)="ToggleSplitAfterDouble($event)">
             <span class="slider round"></span>
         </label>
     </div>
     <div class="Box1">
         <label for="NOD">Doubling Available</label>
-            <select id="DA" name="DA" [(ngModel)]="DA">
+            <select id="DA" name="DA" [(ngModel)]="DA" (ngModelChange)="ToggleDouble($event)">
                 <option [ngValue]="true">Yes</option>
                 <option [ngValue]="false">No</option>
             </select>
@@ -44,14 +44,14 @@
     <div class="Box1">
         <p>Resplitting Aces</p>
         <label class="switch right">
-            <input type="checkbox" [(ngModel)]="RA">
+            <input type="checkbox" [(ngModel)]="RA" (ngModelChange)="ToggleSplitAces($event)">
             <span class="slider round"></span>
         </label>
     </div>
     <div class="Box1">
         <p>Surrender</p>
         <label class="switch right">
-            <input type="checkbox" [(ngModel)]="SURR">
+            <input type="checkbox" [(ngModel)]="SURR" (ngModelChange)="ToggleSurrender($event)">
             <span class="slider round"></span>
         </label>
     </div>
@@ -76,12 +76,41 @@
 
     <div class="player">
         <fieldset [disabled]="isShuffling || !PlayersTurn">
+
+            @if (BET) {
+              <div class="Bet">
+                <div>
+                    <div class="Top">
+                        <p>Place your bet</p>
+                    </div>
+                    <div class="Chips">
+                        <p>Bankroll:{{this.BankRoll}}</p>
+                        <div class="chip_image">
+                            <img src="Chips/chip_500.png" (click)="Betting(500)">
+                            <img src="Chips/chip_100.png" (click)="Betting(100)">
+                            <img src="Chips/chip_25.png" (click)="Betting(25)">
+                            <img src="Chips/chip_5.png" (click)="Betting(5)">
+                        </div>
+                    </div>
+                    <div class="Betting">
+                        <p>Amount:</p>
+                        <p class="BetAmount">${{bet}}</p>
+                        <p class="ClearBet" (click)="ClearBet()">Clear Bet</p>
+                    </div>
+                    <div class="Option">
+                        <div class="end" (click)="EndDrill()">End Drill</div>
+                        <div class="deal" (click)="Deal()">Deal</div>
+                    </div>
+                </div>
+            </div>
+            }
+
             <div class="decision">
                 <button (click)="Hit()"  id="hit" class="buttons-player">HIT</button>
                 <button  (click)="Stand()" id="stand" class="buttons-player">STD</button>
-                <button  id="double" class="buttons-player">DBL</button>
+                <button  id="double" class="buttons-player" [disabled]="!DA" (click)="Double()">DBL</button>
                 <button  id="split" class="buttons-player">SPL</button>
-                <button  id="surrender" class="buttons-player">SUR</button>
+                <button  id="surrender" class="buttons-player" [disabled]="!SURR" (click)="Surrender()">SUR</button>
                 <button  id="insurance" class="buttons-player">INS</button>
             </div>
         </fieldset>
