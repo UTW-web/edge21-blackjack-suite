@@ -63,6 +63,7 @@ endGame (message:string) {
   PlayersTurn: boolean=true;
 
   BET:boolean = true;
+  BET2:boolean = this.BET;
 
   NOD: number=8;
   DHS17: boolean = true;
@@ -168,6 +169,7 @@ ToggleH17(value: boolean) {
 }
 ToggleBet(value: boolean) {
   console.log("Betting:", value? "ENABLED" : "DISABLED")
+  this.BET2 = value;
 }
 ToggleSplitAfterDouble(value: boolean) {
   console.log("Spliting after double:", value? "ENABLED" : "DISABLED")
@@ -201,7 +203,7 @@ Deal() {
     return;
   }
 
-  this.BET = false;
+  this.BET2 = false;
 }
 EndDrill() {
   this.router.navigate(['/'])
@@ -293,8 +295,10 @@ resetHand() {
   this.drawCard(this.dealerHand);
   this.drawCard(this.dealerHand);
 
-  this.BET = true;
   this.BankRoll -= this.bet;
+  if (this.BET) {
+    this.BET2 = true;
+  }
 
   this.cdr.detectChanges();
 };
