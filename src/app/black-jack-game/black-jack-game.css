@@ -258,7 +258,8 @@ input:checked + .slider:before {
   text-align: center;
   justify-content: center;
   border: 1px solid black;
-  width: 20%;
+  width: 30%;
+  max-width:15rem;
   height: 25%;
   background-color: white;
   color: black;
@@ -298,8 +299,8 @@ input:checked + .slider:before {
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   color:black;
   width: 90%;
+  max-width: 25rem;
   overflow: hidden;
-
 }
 .Top {
   color:white;
