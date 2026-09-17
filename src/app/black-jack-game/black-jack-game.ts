@@ -31,7 +31,7 @@ export class BlackJackGame implements OnInit {
   };
 
 startGame() {
-
+    this.DealNotActive = false;
     this.gameOver=false;
     this.playerHand = [];
     this.dealerHand = [];
@@ -48,9 +48,15 @@ startGame() {
     this.rules();
     this.playerValue = this.sum_card_value(this.playerHand);
     this.dealerValue = this.sum_card_value(this.dealerHand);
+    
+    
+    this.INST();
 
     this.cdr.detectChanges();
-    
+
+    if (this.playerValue === 21 && this.DealNotActive) {
+      this.Stand();
+    }
 }
 endGame (message:string) {
   this.gameOver=true;
@@ -71,6 +77,7 @@ endGame (message:string) {
   DA: boolean = true;
   RA: boolean = false;
   SURR: boolean = true;
+  INSY: boolean = true;
 
   playerHand: any[] = [];
   dealerHand: any[] = [];
@@ -86,10 +93,17 @@ endGame (message:string) {
     //card objects
     const card_patterns = ['❤️', '♦️', '♠️', '♣️'];
     const card_value: Record<string, number> = {
+      /*
+      '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, */'10': 10,
+      'J': 10, 'Q': 10, 'K': 10, 
+      'A': 11
+    };
+    /*
+    const card_value: Record<string, number> = {
       '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10,
       'J': 10, 'Q': 10, 'K': 10, 'A': 11
     };
-
+*/
     const values = Object.keys(card_value);
 
     const singleDeck = card_patterns.flatMap(card_pattern =>
@@ -183,6 +197,9 @@ ToggleSplitAces(value: boolean) {
 ToggleSurrender(value: boolean) {
   console.log("Surrender:", value? "ENABLED" : "DISABLED")
 }
+ToggleInsurance(value: boolean) {
+  console.log("Insurance:", value? "ENABLED" : "DISABLED")
+}
 
 bet = 0;
 BankRoll:number = 100000;
@@ -192,7 +209,9 @@ Betting(value: number) {
 ClearBet() {
   this.bet = 0;
 }
+DealNotActive:boolean = false;
 Deal() {
+  this.DealNotActive = true;
   if (this.bet <= 0) {
     console.log("Bet cannot be 0 or below");
     return;
@@ -204,6 +223,9 @@ Deal() {
   }
 
   this.BET2 = false;
+  if (this.playerValue === 21) {
+        this.Stand();
+      }
 }
 EndDrill() {
   this.router.navigate(['/'])
@@ -218,6 +240,36 @@ Surrender() {
   this.bet = this.bet/2;
   this.Surr = true;
   this.Stand();
+}
+INS:boolean = false;
+INST() {
+  this.INS = this.dealerHand[1]?.value === 'A';
+}
+insuranceBet = 0;
+
+Insurance(yes: boolean) {
+  if (yes) {
+    const insuranceCost = this.bet / 2;
+    this.BankRoll -= insuranceCost;   
+    this.insuranceBet = insuranceCost;
+
+    this.INSC();
+  }
+
+  this.INS = false;
+}
+INSC() {
+  for (const cards of this.dealerHand) {
+      if (
+      cards.value === '10' ||
+      cards.value === 'J' ||
+      cards.value === 'Q' ||
+      cards.value === 'K'
+    ) {
+          this.BankRoll += this.insuranceBet * 3;
+      }
+    }
+    this.insuranceBet = 0;
 }
 rules() {
   const playerValue=this.sum_card_value(this.playerHand);
@@ -263,8 +315,14 @@ Stand() {
   const playerValue=this.sum_card_value(this.playerHand);
   const dealerValue=this.sum_card_value(this.dealerHand);
 
-  if (this.Surr) {
+  if (this.playerValue === 21) {
+    this.gameResult = "WON - BlackJack";
+    this.BankRoll += this.bet*2.5;
+  }else if (this.Surr) {
     this.gameResult = "Surrenderd"
+  }else if (playerValue === 21) {
+    this.gameResult = "WON - BlackJack"
+    this.BankRoll += this.bet*2.5
   }else if (dealerValue > 21) {
     this.gameResult = "DEALER BUST - WON"; 
     this.BankRoll += this.bet*2
@@ -275,12 +333,14 @@ Stand() {
     this.gameResult = "LOST"
   } else {
     this.gameResult = "PUSH (Tie)"
+    this.BankRoll += this.bet;
   }
 
   this.gameOver = true;
   this.cdr.detectChanges();
 };
 resetHand() {
+  this.DealNotActive = false;
   this.gameOver=false;
   this.PlayersTurn=true;
 
@@ -300,7 +360,13 @@ resetHand() {
     this.BET2 = true;
   }
 
+  this.INST()
+
   this.cdr.detectChanges();
+
+  if (this.playerValue === 21 && this.DealNotActive) {
+    this.Stand();
+  }
 };
 Hit () {
   if (!this.PlayersTurn || this.isShuffling) return;

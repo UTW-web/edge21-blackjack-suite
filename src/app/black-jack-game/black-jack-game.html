@@ -55,6 +55,13 @@
             <span class="slider round"></span>
         </label>
     </div>
+    <div class="Box1">
+        <p>Insurance</p>
+        <label class="switch right">
+            <input type="checkbox" [(ngModel)]="INSY" (ngModelChange)="ToggleInsurance($event)">
+            <span class="slider round"></span>
+        </label>
+    </div>
 
     </div>
     
@@ -106,18 +113,34 @@
             }
 
             <div class="decision">
-                <button (click)="Hit()"  id="hit" class="buttons-player">HIT</button>
-                <button  (click)="Stand()" id="stand" class="buttons-player">STD</button>
-                <button  id="double" class="buttons-player" [disabled]="!DA" (click)="Double()">DBL</button>
-                <button  id="split" class="buttons-player">SPL</button>
-                <button  id="surrender" class="buttons-player" [disabled]="!SURR" (click)="Surrender()">SUR</button>
-                <button  id="insurance" class="buttons-player">INS</button>
+                <button (click)="Hit()"  id="hit" class="buttons-player" [disabled]="BET2">HIT</button>
+                <button  (click)="Stand()" id="stand" class="buttons-player" [disabled]="BET2">STD</button>
+                <button  id="double" class="buttons-player" [disabled]="!DA || BET2" (click)="Double()">DBL</button>
+                <button  id="split" class="buttons-player" [disabled]="BET2">SPL</button>
+                <button  id="surrender" class="buttons-player" [disabled]="!SURR || BET2" (click)="Surrender()">SUR</button>
             </div>
+
+            @if (INSY && INS) {
+
+                <div class="result-overlay">
+                    <h1>Insurance?</h1>
+                    <div class="INSBC">
+                    <button (click)="Insurance(true)" class="new-hand">Yes</button>
+                    <button (click)="Insurance(false)" class="new-hand">No</button>
+                    </div>
+                </div>
+
+            }
         </fieldset>
     </div>
     <div class="card-container_dealer" name="dealerHand">
         @for (card of dealerHand; track card.id; let  i = $index) {
-            @if (i === 0 && !gameOver) {
+            @if (i === 1 && !this.DealNotActive) {
+                <div class="card-container_dealer">
+                    <img class="back_card_pattern" src="back_card_pattern/back_card_pattern.jpg">
+                </div>
+            }
+            @else if (i === 0 && !gameOver) {
                 <div class="card_dealer">
                     <img class="back_card_pattern" src="back_card_pattern/back_card_pattern.jpg">
                 </div>
@@ -130,7 +153,7 @@
                         <div class="value">{{card.value}}</div> 
                         <div>{{card.card_pattern}}</div>
                     </div>
-                </div> 
+                </div>
             }
         }
     </div>
@@ -138,12 +161,17 @@
     <div class="card-container_player" name="playerHand">
         @for (card of playerHand; track card.id) {
         <div class="card_player">
-            <div class="value">{{card.value}}</div> 
-                <div>{{card.card_pattern}}</div>
-            <div class="down">
+            @if (!this.DealNotActive) {
+                <img class="back_card_pattern" src="back_card_pattern/back_card_pattern.jpg">
+            }@else{
                 <div class="value">{{card.value}}</div> 
-                <div>{{card.card_pattern}}</div>
-            </div>
+                    <div>{{card.card_pattern}}</div>
+                    <div class="down">
+                        <div class="value">{{card.value}}</div> 
+                        <div>{{card.card_pattern}}</div>
+                </div>
+            }
+            
         </div>
         }
     </div>

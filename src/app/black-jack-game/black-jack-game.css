@@ -56,13 +56,8 @@ main {
     padding: 0.8rem;
     box-shadow: 0 -4px 15px rgba(0,0,0,0.3);
 }
-#double:disabled {
-  background: grey;
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-#surrender:disabled {
-  background: grey;
+.buttons-player:disabled {
+  background: rgb(75, 137, 72);
   opacity: 0.5;
   cursor: not-allowed;
 }
@@ -131,7 +126,6 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
@@ -260,7 +254,7 @@ input:checked + .slider:before {
   border: 1px solid black;
   width: 30%;
   max-width:15rem;
-  height: 25%;
+  height: 20%;
   background-color: white;
   color: black;
   border-radius:0.4rem;
@@ -276,7 +270,7 @@ input:checked + .slider:before {
   height:100vh;
   width:100vw;
   top:0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.242);
   z-index:1000;
 }
 .new-hand {
@@ -359,4 +353,10 @@ input:checked + .slider:before {
   flex:1;
   padding:15px;
   text-align: center;
+}
+.INSBC {
+  display:flex;
+  justify-content: center;
+  flex-direction: row;
+  gap:10px;
 }
