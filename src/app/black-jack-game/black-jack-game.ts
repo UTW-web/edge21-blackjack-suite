@@ -93,17 +93,11 @@ endGame (message:string) {
     //card objects
     const card_patterns = ['❤️', '♦️', '♠️', '♣️'];
     const card_value: Record<string, number> = {
-      /*
-      '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, */'10': 10,
+      '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10,
       'J': 10, 'Q': 10, 'K': 10, 
       'A': 11
     };
-    /*
-    const card_value: Record<string, number> = {
-      '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10,
-      'J': 10, 'Q': 10, 'K': 10, 'A': 11
-    };
-*/
+
     const values = Object.keys(card_value);
 
     const singleDeck = card_patterns.flatMap(card_pattern =>
