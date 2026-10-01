@@ -195,6 +195,15 @@ input:checked + .slider:before {
 .card-container_player {
   bottom: 20px;
 }
+.card-container_player2 {
+  position: absolute;
+  left: 20%;
+  transform: translateX(-50%);
+  display: flex;
+  gap:20px;
+  bottom: 20px;
+}
+
 
 .card-container_dealer {
   top: 20px;

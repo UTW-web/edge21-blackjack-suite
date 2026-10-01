@@ -113,10 +113,10 @@
             }
 
             <div class="decision">
-                <button (click)="Hit()"  id="hit" class="buttons-player" [disabled]="BET2">HIT</button>
-                <button  (click)="Stand()" id="stand" class="buttons-player" [disabled]="BET2">STD</button>
+                <button  id="hit" class="buttons-player" [disabled]="BET2" (click)="Hit()">HIT</button>
+                <button  id="stand" class="buttons-player" [disabled]="BET2" (click)="Stand()">STD</button>
                 <button  id="double" class="buttons-player" [disabled]="!DA || BET2" (click)="Double()">DBL</button>
-                <button  id="split" class="buttons-player" [disabled]="BET2">SPL</button>
+                <button  id="split" class="buttons-player" [disabled]="BET2 || !SPL && SPLL" (click)="Split()">SPL</button>
                 <button  id="surrender" class="buttons-player" [disabled]="!SURR || BET2" (click)="Surrender()">SUR</button>
             </div>
 
@@ -133,6 +133,7 @@
             }
         </fieldset>
     </div>
+    @if (BET) {
     <div class="card-container_dealer" name="dealerHand">
         @for (card of dealerHand; track card.id; let  i = $index) {
             @if (i === 1 && !this.DealNotActive) {
@@ -157,7 +158,29 @@
             }
         }
     </div>
+} @else {
+        <div class="card-container_dealer" name="dealerHand">
+        @for (card of dealerHand; track card.id; let  i = $index) {
+            @if (i === 0 && !gameOver) {
+                <div class="card_dealer">
+                    <img class="back_card_pattern" src="back_card_pattern/back_card_pattern.jpg">
+                </div>
+            }
+            @else {
+               <div class="card_dealer">
+                <div class="value">{{card.value}}</div> 
+                        <div>{{card.card_pattern}}</div>
+                    <div class="down">
+                        <div class="value">{{card.value}}</div> 
+                        <div>{{card.card_pattern}}</div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}
     
+    @if (BET) {
     <div class="card-container_player" name="playerHand">
         @for (card of playerHand; track card.id) {
         <div class="card_player">
@@ -167,7 +190,7 @@
                 <div class="value">{{card.value}}</div> 
                     <div>{{card.card_pattern}}</div>
                     <div class="down">
-                        <div class="value">{{card.value}}</div> 
+                        <div class="value">{{card.value}}</div>
                         <div>{{card.card_pattern}}</div>
                 </div>
             }
@@ -175,6 +198,34 @@
         </div>
         }
     </div>
+}@else{
+    <div class="card-container_player" name="playerHand">
+        @for (card of playerHand; track card.id) {
+        <div class="card_player">
+                <div class="value">{{card.value}}</div> 
+                    <div>{{card.card_pattern}}</div>
+                    <div class="down">
+                        <div class="value">{{card.value}}</div>
+                        <div>{{card.card_pattern}}</div>
+                </div>
+        </div>
+        }
+    </div>
+}
+@if (SPLH) {
+    <div class="card-container_player2" name="playerHand">
+        @for (card of playerHand2; track card.id) {
+        <div class="card_player">
+                <div class="value">{{card.value}}</div> 
+                    <div>{{card.card_pattern}}</div>
+                    <div class="down">
+                        <div class="value">{{card.value}}</div>
+                        <div>{{card.card_pattern}}</div>
+                </div>
+        </div>
+        }
+    </div>
+}
 
     @if (isShuffling) {
         <div class="overlay">

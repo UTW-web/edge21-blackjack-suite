@@ -34,6 +34,7 @@ startGame() {
     this.DealNotActive = false;
     this.gameOver=false;
     this.playerHand = [];
+    this.playerHand2 = [];
     this.dealerHand = [];
     this.deck = [];
     
@@ -47,9 +48,10 @@ startGame() {
     
     this.rules();
     this.playerValue = this.sum_card_value(this.playerHand);
+    this.playerValue2 = this.sum_card_value(this.playerHand2);
     this.dealerValue = this.sum_card_value(this.dealerHand);
     
-    
+    this.SPLC()
     this.INST();
 
     this.cdr.detectChanges();
@@ -80,10 +82,12 @@ endGame (message:string) {
   INSY: boolean = true;
 
   playerHand: any[] = [];
+  playerHand2: any[] = [];
   dealerHand: any[] = [];
   deck: any[] = [];
 
   playerValue: number=0;
+  playerValue2: number=0;
   dealerValue: number=0;
 
   isShuffling: boolean = false;
@@ -93,8 +97,8 @@ endGame (message:string) {
     //card objects
     const card_patterns = ['❤️', '♦️', '♠️', '♣️'];
     const card_value: Record<string, number> = {
-      '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10,
-      'J': 10, 'Q': 10, 'K': 10, 
+     /*  '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10,
+      'J': 10, 'Q': 10, 'K': 10,  */
       'A': 11
     };
 
@@ -205,7 +209,6 @@ ClearBet() {
 }
 DealNotActive:boolean = false;
 Deal() {
-  this.DealNotActive = true;
   if (this.bet <= 0) {
     console.log("Bet cannot be 0 or below");
     return;
@@ -220,6 +223,7 @@ Deal() {
   if (this.playerValue === 21) {
         this.Stand();
       }
+  this.DealNotActive = true;
 }
 EndDrill() {
   this.router.navigate(['/'])
@@ -291,7 +295,7 @@ S17(hand:any []) {
       sum_value-=10
       aces-=1
     }
-    if (sum_value === 17 && (aces === 1|| aces===2)) {
+    if (sum_value === 17 && (aces === 1 || aces===2)) {
       S17 = true;
     }
 
@@ -339,6 +343,7 @@ resetHand() {
   this.PlayersTurn=true;
 
   this.playerHand = [];
+  this.playerHand2 = [];
   this.dealerHand = [];
 
   this.playerValue = 0;
@@ -353,7 +358,7 @@ resetHand() {
   if (this.BET) {
     this.BET2 = true;
   }
-
+  this.SPLC()
   this.INST()
 
   this.cdr.detectChanges();
@@ -367,6 +372,28 @@ Hit () {
 
   this.drawCard(this.playerHand);
 };
+SPL:boolean = false;
+SPLC () {
+      if (this.playerHand.length === 2 && this.playerHand[0].value === this.playerHand[1].value) {
+        this.SPL = true;
+      }
+}
+SPLH:boolean = false;
+SPLL:boolean = false;
+SPLCount = 0;
+Split () {
+  
+  this.SPLH = true;
+  if (this.SPLCount === 4) {
+    this.SPLL = true;
+    return;
+  }
+  
+  this.drawCard(this.playerHand2);
+  this.drawCard(this.playerHand2);
+  this.SPLCount++;
+  
+}
 
 };
 
