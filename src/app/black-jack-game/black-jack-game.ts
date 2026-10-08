@@ -35,6 +35,7 @@ startGame() {
     this.gameOver=false;
     this.playerHand = [];
     this.playerHand2 = [];
+    this.playerHand3 = [];
     this.dealerHand = [];
     this.deck = [];
     
@@ -49,6 +50,7 @@ startGame() {
     this.rules();
     this.playerValue = this.sum_card_value(this.playerHand);
     this.playerValue2 = this.sum_card_value(this.playerHand2);
+    this.playerValue2 = this.sum_card_value(this.playerHand3);
     this.dealerValue = this.sum_card_value(this.dealerHand);
     
     this.SPLC()
@@ -83,11 +85,13 @@ endGame (message:string) {
 
   playerHand: any[] = [];
   playerHand2: any[] = [];
+  playerHand3: any[] = [];
   dealerHand: any[] = [];
   deck: any[] = [];
 
   playerValue: number=0;
   playerValue2: number=0;
+  playerValue3: number=0;
   dealerValue: number=0;
 
   isShuffling: boolean = false;
@@ -311,6 +315,8 @@ Stand() {
   }
 
   const playerValue=this.sum_card_value(this.playerHand);
+  const playerValue2=this.sum_card_value(this.playerHand2);
+  const playerValue3=this.sum_card_value(this.playerHand3);
   const dealerValue=this.sum_card_value(this.dealerHand);
 
   if (this.playerValue === 21) {
@@ -344,6 +350,7 @@ resetHand() {
 
   this.playerHand = [];
   this.playerHand2 = [];
+  this.playerHand3 = [];
   this.dealerHand = [];
 
   this.playerValue = 0;
@@ -360,6 +367,9 @@ resetHand() {
   }
   this.SPLC()
   this.INST()
+
+  this.SPLMove = false;
+  this.SPLMove2 = false;
 
   this.cdr.detectChanges();
 
@@ -381,18 +391,32 @@ SPLC () {
 SPLH:boolean = false;
 SPLL:boolean = false;
 SPLCount = 0;
+SPLMove:boolean = false;
+SPLMove2:boolean = false;
 Split () {
   
   this.SPLH = true;
-  if (this.SPLCount === 4) {
+  
+  if (this.SPLCount === 2) {
     this.SPLL = true;
     return;
+  }else {
+    this.SPLMove = true;
+  }
+
+  if (this.SPLCount === 1) {
+    this.SPLMove2 = true;
+  }
+
+  if (this.SPLMove2) {
+    this.drawCard(this.playerHand3);
+    this.drawCard(this.playerHand3);
+  }else {
+    this.drawCard(this.playerHand2);
+    this.drawCard(this.playerHand2);
   }
   
-  this.drawCard(this.playerHand2);
-  this.drawCard(this.playerHand2);
   this.SPLCount++;
-  
 }
 
 };

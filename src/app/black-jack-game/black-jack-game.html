@@ -179,9 +179,8 @@
         }
     </div>
 }
-    
     @if (BET) {
-    <div class="card-container_player" name="playerHand">
+    <div class="card-container_player" name="playerHand" [class.move]="SPLMove">
         @for (card of playerHand; track card.id) {
         <div class="card_player">
             @if (!this.DealNotActive) {
@@ -199,7 +198,7 @@
         }
     </div>
 }@else{
-    <div class="card-container_player" name="playerHand">
+    <div class="card-container_player SPLH" name="playerHand" [class.move]="SPLMove">
         @for (card of playerHand; track card.id) {
         <div class="card_player">
                 <div class="value">{{card.value}}</div> 
@@ -213,7 +212,8 @@
     </div>
 }
 @if (SPLH) {
-    <div class="card-container_player2" name="playerHand">
+
+    <div class="card-container_player" name="playerHand" [class.move2]="SPLMove2">
         @for (card of playerHand2; track card.id) {
         <div class="card_player">
                 <div class="value">{{card.value}}</div> 
@@ -225,6 +225,22 @@
         </div>
         }
     </div>
+
+    @if (SPLMove2) {
+        <div class="card-container_player" name="playerHand">
+            @for (card of playerHand3; track card.id) {
+                <div class="card_player">
+                    <div class="value">{{card.value}}</div> 
+                        <div>{{card.card_pattern}}</div>
+                        <div class="down">
+                            <div class="value">{{card.value}}</div>
+                            <div>{{card.card_pattern}}</div>
+                        </div>
+                </div>
+        }
+        </div>
+    }
+
 }
 
     @if (isShuffling) {

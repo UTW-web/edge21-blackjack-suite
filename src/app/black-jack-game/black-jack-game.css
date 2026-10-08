@@ -191,20 +191,9 @@ input:checked + .slider:before {
   display: flex;
   gap:20px;
 }
-
 .card-container_player {
   bottom: 20px;
 }
-.card-container_player2 {
-  position: absolute;
-  left: 20%;
-  transform: translateX(-50%);
-  display: flex;
-  gap:20px;
-  bottom: 20px;
-}
-
-
 .card-container_dealer {
   top: 20px;
 }
@@ -221,16 +210,16 @@ input:checked + .slider:before {
   z-index: 10;
 }
 .overlay {
-  position: fixed; /* Da prekrije celo okno */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Temno ozadje */
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
-  justify-content: center; /* Centriranje na sredino */
+  justify-content: center;
   align-items: center;
-  z-index: 1000; /* Da je zagotovo vrh vsega */
+  z-index: 1000;
 }
 
 .shuffling {
@@ -368,4 +357,13 @@ input:checked + .slider:before {
   justify-content: center;
   flex-direction: row;
   gap:10px;
+}
+[name = "playerHand"] {
+  transition: transform 0.3s ease;
+}
+[name = "playerHand"].move {
+  transform: translateX(60%);
+}
+[name = "playerHand"].move2 {
+  transform: translateX(-160%);
 }
